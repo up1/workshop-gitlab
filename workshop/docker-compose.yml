@@ -1,6 +1,8 @@
+version: '3.8'
 services:
+
   gitlab-server:
-    image: gitlab/gitlab-ce:latest
+    image: 'gitlab/gitlab-ce:latest'
     container_name: gitlab-server
     environment:
       GITLAB_ROOT_EMAIL: "admin@demo.com"
@@ -13,17 +15,8 @@ services:
     volumes:
       - ./gitlab/config:/etc/gitlab
       - ./gitlab/data:/var/opt/gitlab
-    networks:
-      - gitlab-in-docker
 
   gitlab-runner:
     image: gitlab/gitlab-runner:alpine
     container_name: gitlab-runner
     network_mode: 'host'
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-
-networks:
-  gitlab-in-docker:
-    name: gitlab-in-docker
-    driver: bridge
