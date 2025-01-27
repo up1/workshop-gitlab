@@ -27,8 +27,23 @@ $docker compose up -d gitlab-runner
 $docker compose ps
 ```
 
-## 3. Add GitLab CI runner in GitLab Server
+## 3. Add GitLab CI runner
+* Goto project settings -> CI/CD -> Runners
+
 ```
-$gitlab-runner register  --url http://localhost:8000  \
-                        --token glrt-ydjvGwY6HqXrtBwz9Myh
+# Download the binary for your system
+sudo curl -L --output /usr/local/bin/gitlab-runner https://gitlab-runner-downloads.s3.amazonaws.com/latest/binaries/gitlab-runner-linux-amd64
+
+# Give it permission to execute
+sudo chmod +x /usr/local/bin/gitlab-runner
+
+# Create a GitLab Runner user
+sudo useradd --comment 'GitLab Runner' --create-home gitlab-runner --shell /bin/bash
+
+# Install and run as a service
+sudo gitlab-runner install --user=gitlab-runner --working-directory=/home/gitlab-runner
+sudo gitlab-runner start
+
+# Register
+sudo gitlab-runner register --url http://localhost:8000 --registration-token GR1348941DaFqy98J5Zt9WgvPu9ye
 ```
