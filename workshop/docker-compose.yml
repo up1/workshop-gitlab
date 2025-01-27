@@ -3,7 +3,7 @@ services:
     image: gitlab/gitlab-ce:latest
     container_name: gitlab-server
     environment:
-      GITLAB_ROOT_EMAIL: "admin@buildwithlal.com"
+      GITLAB_ROOT_EMAIL: "admin@demo.com"
       GITLAB_ROOT_PASSWORD: "Abcd@0123456789"
       GITLAB_OMNIBUS_CONFIG: |
         external_url 'http://localhost:8000'
