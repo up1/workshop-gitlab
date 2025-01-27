@@ -19,3 +19,5 @@ services:
     image: gitlab/gitlab-runner:alpine
     container_name: gitlab-runner
     network_mode: 'host'
+    volumes:
+      - ./gitlab-runner/config:/etc/gitlab-runner

@@ -5,6 +5,7 @@
 ## 1. Start GitLab server
 ```
 $docker compose up -d gitlab-server
+$docker compose logs -f
 
 // Waiting .... 3-5 minutes
 $docker compose ps
